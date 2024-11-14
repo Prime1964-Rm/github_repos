@@ -1,18 +1,20 @@
 import Image from "next/image";
-import localFont from "next/font/local";
 import useFetch from "@@/hooks/useFetch";
 import RepoCard from "@@/components/RepoCard";
 
-
-
 export default function Repos() {
- 
-  const {data,loading,error} = useFetch("https://api.github.com/orgs/godaddy/repos")
+  const { data, loading, error } = useFetch(
+    "https://api.github.com/orgs/godaddy/repos"
+  );
+
+  console.log(loading, error);
   return (
     <div
       className={`grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
     >
-      <header className="w-full absolute flex items-center justify-start shadow-sm shadow-white top-0"> <Image
+      <header className="w-full absolute flex items-center justify-start shadow-sm shadow-white top-0">
+        {" "}
+        <Image
           className="dark:invert"
           src="/images/github_logo.png"
           alt="Next.js logo"
@@ -21,20 +23,20 @@ export default function Repos() {
           priority
         />
         <span>Rishabh Mishra</span>
-        </header>
-        
-        <main className="flex flex-col gap-6 row-start-2 items-center sm:items-start w-full">
+      </header>
+
+      <main className="flex flex-col gap-6 row-start-2 items-center sm:items-start w-full">
         <code className="my-4 text-center text-xs sm:text-sm">
           Note: Click "View more" to check repo
         </code>
         <div className="repo-list grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 w-full">
-          {data.map((repo:any) => (
+          {data.map((repo: any) => (
             <RepoCard key={repo?.id} {...repo} />
           ))}
         </div>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-      All Rights Reserved
+        All Rights Reserved
       </footer>
     </div>
   );

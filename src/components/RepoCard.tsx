@@ -9,8 +9,7 @@ import {
 
 export default function RepoCard(props: any) {
   const { name, private: isPrivate, description, language }: any = props;
-  const { selectedData, setSelectedData }: any =
-    useRepoDetailsContext(RepoDetailsContext);
+  const { setSelectedData }: any = useRepoDetailsContext(RepoDetailsContext);
 
   return (
     <div className="border-2 p-4 rounded-xl border-[#3d444d] cursor-pointer text-white">
